@@ -21,4 +21,22 @@ def create(request):
     blog.save()
     return redirect('/blogapp/'+str(blog.id))
 
+def edit(request, blog_id):
+    blog = Blogapp.objects.get(pk = blog_id)
+    
+    if (request.method == 'POST'):
+        blog.title = request.POST['title']
+        blog.body = request.POST['body']
+        blog.pub_date = timezone.datetime.now()
+        blog.save()
+        return redirect('/blogapp/'+str(blog.id))
+    
+    return render(request,'edit.html', {'blog':blog} )
+
+def destroy(request, blog_id ):
+    blog = Blogapp.objects.get(pk = blog_id)
+    blog.delete()
+    return redirect('/')
+
+
 

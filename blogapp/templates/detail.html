@@ -2,12 +2,17 @@
     
 {% block contents %}
 
-    <h1>자세한 본문 내용입니다</h1>
+    <h1>::자세한 본문 내용입니다::</h1>
     <br><br>
     <div class="container">
         <h2>{{blogapp.title}}</h2>
         <p>{{blogapp.pub_date}}</p>
         <p>{{blogapp.body}}</p>
+
+        <br><br><br>
+        
+        <a href="{% url 'edit' blogapp.id %}" type="button" class="btn" style="background-color: palevioletred; color:whitesmoke">edit</a>
+        <a href="{% url 'destroy' blogapp.id %}" type="button" class="btn" style="background-color: plum; color:whitesmoke">delete</a>
     </div>
 
 {% endblock %}

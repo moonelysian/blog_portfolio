@@ -26,5 +26,7 @@ urlpatterns = [
     path('blogapp/<int:blog_id>', blogapp.views.detail, name="detail"),
     path('blogapp/new/', blogapp.views.new, name="new"),
     path('blogapp/create', blogapp.views.create, name="create"),
+    path('blogapp/edit/<int:blog_id>', blogapp.views.edit, name="edit"),
+    path('blogapp/destroy/<int:blog_id>', blogapp.views.destroy, name="destroy"),
     path('portfolio/', portfolio.views.portfolio, name="portfolio"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
