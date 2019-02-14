@@ -2,7 +2,7 @@
     
 {% block contents %}
     
-    {% for blog in blogs.all %}
+    {% for blog in posts %}
         <div class="container">
             <br>
             <div class="card">
@@ -16,5 +16,18 @@
         </div>
         <br>
     {% endfor %}
+    <div class="container">
+        {% if posts.has_previous %}
+        <button class="btn btn-secondary"> <a href="?page=1" style="text-decoration: none; color:white"> <span> << </span></a> </button>
+        <button type="button" class="btn btn-secondary" > <a href="?page={{posts.previous_page_number}}" style="text-decoration: none; color:white"> <span> < </span> </a></button>
+        {% endif %}
+        <span>{{posts.number}}</span>
+        <span>of</span>
+        <span>{{posts.paginator.num_pages}}</span>
+        {% if posts.has_next %}
+        <button type="button" class="btn btn-secondary"><a href="?page={{posts.next_page_number}}" style="text-decoration: none; color:white"> <span> > </span> </a></button>
+        <button type="button" class="btn btn-secondary"><a href="?page={{posts.paginator.num_pages}}" style="text-decoration: none; color:white"> <span> >> </span> </a></button>
+        {% endif %}
+    </div>
     
 {% endblock %}
